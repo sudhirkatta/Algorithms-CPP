@@ -4,7 +4,14 @@
 
 using namespace std;
 
-void distcount(int a[], int l, int r, int M, int maxN) {
+template< typename T> class KeyindexCount{
+
+public:
+    void distcount(int a[], int l, int r, int M, int maxN);
+    void distcount(vector<T> &items, int left, int right, int numKeys);
+};
+
+template< typename T> void KeyindexCount<T>::distcount(int a[], int l, int r, int M, int maxN) {
   int i, j, cnt[M];
   int b[maxN];
   for (j = 0; j < M; j++)
@@ -19,8 +26,7 @@ void distcount(int a[], int l, int r, int M, int maxN) {
     a[i] = b[i];
 }
 
-template <typename T>
-void distcount(vector<T> &items, int left, int right, int numKeys) {
+template< typename T> void KeyindexCount<T>::distcount(vector<T> &items, int left, int right, int numKeys) {
 
   int countKeys[numKeys]{};
   vector<T> b(items.size());
@@ -44,10 +50,11 @@ void distcount(vector<T> &items, int left, int right, int numKeys) {
 
 int main() {
 
+    KeyindexCount<int> keyindexCount;
     //using arrays
   cout << "using arrays"  <<"\n";
   int a[] = {0, 3, 3, 0, 1, 1, 0, 3, 0, 2, 0, 1, 1, 2, 0};
-  distcount(a, 0, 14, 4, 14);
+  keyindexCount.distcount(a, 0, 14, 4, 14);
   for (int &elem : a)
     cout << elem << "  ";
   cout << "\n";
@@ -55,7 +62,7 @@ int main() {
   //using vectors
   cout << "using vectors"  <<"\n";
   vector<int> c{0, 3, 3, 0, 1, 1, 0, 3, 0, 2, 0, 1, 1, 2, 0};
-  distcount(c, 0, 14, 4);
+  keyindexCount.distcount(c, 0, 14, 4);
   for (int &elem : c)
     cout << elem << "  ";
   cout << "\n";

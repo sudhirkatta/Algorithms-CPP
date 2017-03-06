@@ -38,7 +38,6 @@ template <class T> T PQ<T>::getmax() {
 int main() {
 
   PQ<int> pq(4);
-
   pq.insert(5);
   pq.insert(2);
   pq.insert(7);

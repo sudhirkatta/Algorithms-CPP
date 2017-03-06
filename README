@@ -1,1 +1,5 @@
 Algorithms in C++ Fundamentals, Data Structure, Sorting, and Searching.
+
+Linux
+Qt creator 4.8 and cmake
+-std=c++14

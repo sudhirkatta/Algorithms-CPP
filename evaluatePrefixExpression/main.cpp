@@ -1,11 +1,17 @@
-//Recursive program to evaluate prefix expressions
+// Recursive program to evaluate prefix expressions
 #include <iostream>
 using namespace std;
 
-char *a;
-int i;
+template <typename T> class EvaluateExpression {
+  char *a;
+  int& i;
 
-int eval() {
+public:
+  EvaluateExpression(char *a, int& i) : a(a), i(i) {}
+  int eval();
+};
+
+template <typename T> int EvaluateExpression<T>::eval() {
   int x = 0;
   while (a[i] == ' ')
     i++;
@@ -23,8 +29,10 @@ int eval() {
 }
 
 int main() {
-  char b[] = {'*', '+', '7', '*', '*', '4', '6', '+', '8', '9', '5', '\0'};
-  a = b;
-  eval();
-  std::cout << i << std::endl;
+  char expression[] = {'*', '+', '7', '*', '*', '4', '6', '+', '8', '9', '5', '\0'};
+  int result;
+  EvaluateExpression<int> evalexp(expression,result);
+
+  evalexp.eval();
+  std::cout << result << std::endl;
 }
